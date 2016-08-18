@@ -1,39 +1,22 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const tv = require('./src/tv.js')
-const app = express()
+var webpack = require('webpack')
+var webpackDevMiddleware = require('webpack-dev-middleware')
+var config = require('./webpack.config')
+var app = new (require('express'))()
+var port = 3000
 
-app.use(bodyParser.json())
+var compiler = webpack(config)
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
 
-app.get('/', function(req, res) {
-  const _tv = tv({ ip: '192.168.1.14' })
-
-  _tv.send('KEY_VOLUP', function callback(err) {
-    if (err) {
-      throw new Error(err);
-    } else {
-      // command has been successfully transmitted to your tv
-      console.log('mere baaaa')
-    }
-  });
-
-
-  /*const _res = _tv.isAlive(function(err) {
-    if (err) {
-      throw new Error('TV is offline');
-    } else {
-      console.log('TV is ALIVE!');
-    }
-
-    return err
-  })
-
-  console.log(_res)*/
-
-  res.send('sent')
+app.use(function(req, res) {
+  if ( req.originalUrl.indexOf('/css') === 0
+    || req.originalUrl.indexOf('/img') === 0
+  ) {
+    res.sendFile(__dirname + req.originalUrl)
+  } else {
+    res.sendFile(__dirname + '/index.html')
+  }
 })
 
-const port = 3000
 app.listen(port, function(error) {
   if (error) {
     console.error(error)

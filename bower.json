@@ -1,0 +1,25 @@
+{
+  "name": "samsung_remote",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ccorcoveanu-silly/samsung_remote",
+  "description": "Samsung remote dependencies",
+  "main": "",
+  "moduleType": [],
+  "authors": [
+    "Cristi Corcoveanu <cristi.corcoveanu@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Ionicons": "ionicons#~2.0.1"
+  },
+  "devDependencies": {
+    "breakpoint-sass": "~2.7.0"
+  }
+}

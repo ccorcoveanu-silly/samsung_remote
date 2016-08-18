@@ -1,10 +1,12 @@
-var path = require('path');
-var webpack = require('webpack');
+'use strict'
+
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   entry: [
     'babel-polyfill',
-    './main.js'
+    './src/main.js'
   ],
   output: {
     path: __dirname,
@@ -14,7 +16,7 @@ module.exports = {
     loaders: [
       {
         loader: 'babel-loader',
-        test: path.join(__dirname, 'javascript'),
+        test: path.join(__dirname, 'src'),
         query: {
           presets: 'es2015',
         },
@@ -31,4 +33,4 @@ module.exports = {
   },
   // Create Sourcemaps for the bundle
   devtool: 'source-map',
-};
+}

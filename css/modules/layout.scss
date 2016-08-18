@@ -1,0 +1,17 @@
+// Name: Layout
+// Author: Cristi Corcoveanu (http://www.ccorcov.ninja.com)
+
+// !Layout
+// ==|=========================================================================
+//Globals
+* {
+  box-sizing: border-box
+}
+
+html {
+  font-size: $base-font-size-px
+}
+
+body {
+  width: 100%;
+}
